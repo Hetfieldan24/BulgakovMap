@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mapbox.mapboxsdk.android.testapp.activities.TagPlaceActivity">
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/backLayout"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:clickable="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/back"
+                android:contentDescription="@string/image"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/name"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@android:color/black"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listBar"
+        android:background="@drawable/list_bar"
+        android:layout_below="@+id/topBar"
+        android:contentDescription="@string/image"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/listBar"
+        android:scrollbarStyle="outsideInset"
+        android:paddingRight="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:scrollingCache="false"
+        android:animationCache="false"
+        android:textColor="@android:color/black"/>
+
+</RelativeLayout>

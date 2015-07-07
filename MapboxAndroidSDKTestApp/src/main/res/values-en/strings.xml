@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="share_with_facebook">Share with facebook</string>
+    <string name="share_without_facebook">Share with other apps</string>
+    <string name="title_about_project">About the project</string>
+    <string name="title_bulg_and_moscow">Michael Bulgakov and Moscow</string>
+    <string name="title_about_app">About this application</string>
+    <string name="create_response">Create a response</string>
+    <string name="options">Options</string>
+    <string name="sponsor">Sponsor</string>
+    <string name="lng_rus">Русский</string>
+    <string name="lng_en">English</string>
+    <string name="app_id">411469049032943</string>
+    <string name="mark_passed">Mark that this place is passed</string>
+    <string name="uncheck">Uncheck this place</string>
+    <string name="no_result">No result</string>
+    <string name="title_info">Info</string>
+    <string name="more">More</string>
+    <string name="show_on_map">Show on map</string>
+    <string name="share">Share</string>
+    <string name="title_routes">Routes</string>
+    <string name="create_route">Create this route</string>
+    <string name="title_search">Search</string>
+    <string name="appName">Bulgakov Moscow</string>
+    <string name="mainTestMap">Map</string>
+    <string name="alternateTestMap">Alternate Test Map</string>
+    <string name="markersTestMap">Markers Test</string>
+    <string name="itemizedOverlayTestMap">ItemizedIconOverlay</string>
+    <string name="localGeoJSONTestMap">Local GeoJSON</string>
+    <string name="diskCacheDisabledTestMap">DiskCache Disabled</string>
+    <string name="offlineCacheTestMap">Offline Cache</string>
+    <string name="programmaticTestMap">Programmatic</string>
+    <string name="webSourceTileTestMap">WebSourceTile</string>
+    <string name="locateMeTestMap">Locate Me</string>
+    <string name="saveMapOfflineTestMap">Save Map Offline</string>
+    <string name="pathTestMap">PathOverlay</string>
+    <string name="bingTestMap">Bing Test Map</string>
+    <string name="mapbox_id_terrain">bulgakovmap.l75gjll2</string>
+    <string name="drawerOpen">Open Nav Drawer</string>
+    <string name="drawerClose">Close Nav Drawer</string>
+    <string name="dataOn">Data On</string>
+    <string name="dataOff">Data Off</string>
+    <string name="place">Place</string>
+    <string name="route">Route</string>
+    <string name="title_activity_sharing">SharingActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saveMapButtonText">Save Map</string>
+    <string name="loadMapButtonText">Load Map</string>
+    <string name="deleteMapsButtonText">Delete Map</string>
+    <string name="resetMapButtonText">Reset</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_places_list">PlacesListActivity</string>
+    <string name="title_activity_activity_for_gps">ActivityForGPS</string>
+    <string name="title_activity_places_cards">PlacesCardsActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_tag_place">TagPlaceActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="map">Map</string>
+    <string name="list">List</string>
+    <string name="places">Places</string>
+    <string name="routes">Routes</string>
+    <string name="search">Search</string>
+    <string name="info">Information</string>
+    <string name="image">Image</string>
+    <string name="about_project">Mikhail Bulgakov was one of the 20th century\'s preeminent "Moscow" writers. His books are full of references to the streets of Moscow, and the city is rich with Bulgakovian history. The buildings and streets where Bulgakov lived (or which he frequented) are often the very same ones that his characters inhabit. For this reason, the map you hold in your hands is really of two cities – one literary, one real – and it\'s sometimes difficult to say where one ends and the other begins. The authors have made no attempt to separate the two. Instead, we invite readers to join us in exploring the connections between Moscow and the beloved, enigmatic literary space that Mikhail Bulgakov created.
+
+Most locations are accompanied by detailed descriptions and new and archival photographs. The app also includes several self-guided walking tours.
+
+    </string>
+    <string name="bulg_and_moscow_prolog">Moscow is a grand city.
+\nM. Bulgakov (from his diary)
+    </string>
+    <string name="bulg_and_moscow">\nMikhail Afanasyevich Bulgakov\'s love affair with Moscow began the moment he arrived in the autumn of 1921. He wrote about the city with enthusiasm and at length; his Moscow stories and a series of vignettes entitled "The Capital in a Notebook" enjoyed great success between 1922 and 1924. Bulgakov loved exploring the city on foot, and his walks took him nearly everywhere. He knew Moscow like the back of his hand, from main squares to crooked streets and alleyways. He also loved skiing with friends along the Moscow River embankment and in Neskuchny Garden.
+
+The writer had especially close ties to two Moscow neighborhoods – the area around Patriarch\'s Ponds and, later, Prechistenka. His first permanent address in the city was 10 Bolshaya Sadovaya Ulitsa, where he lived from 1921 to 1924. Today, the M. A. Bulgakov Museum occupies what was once communal apartment 50.
+
+In 1927, Bulgakov, now a well-known playwright, rented an apartment on Bolshaya Pirogovskaya Ulitsa. He spent the second half of the 1920s on Ulitsa Prechistenka and the surrounding side streets, where many of his friends lived. The writer chose an apartment building at the corner of Ulitsa Prechistenka and Chisty Pereulok as the home of Filip Filippovich Preobrazhensky, the godlike professor in Heart of a Dog. Bulgakov acquired his first apartment on nearby Nashchokinsky Pereulok in 1934. Sadly, the building has not survived.
+
+Bulgakov remains the preeminent "Moscow" writer of the 20th century; old Moscow comes alive in his prose. The more we immerse ourselves in his books, the more contemporary Moscow, twisted by time, gives way to the old streets, apartment buildings, and squares he so loved.
+
+</string>
+    <string name="about_app">A project of the M. A. Bulgakov Museum
+Bolshaya Sadovaya Ulitsa, 10, Entrance 6, 4th Floor, Flat 50, Moscow
+
+\n<a href="http://www.bulgakovmuseum.ru/en/">bulgakovmuseum.ru/en/</a>
+\n<a href="http://www.facebook.com/bulgakovmuseum">facebook.com/bulgakovmuseum</a>
+\n<a href="http://www.vk.com/bulgakovmuseum">vk.com/bulgakovmuseum</a>
+\n\n© Photography by A. Akimov, V. Ptashenchuk, <a href="http://www.pastvu.com">pastvu.com</a>, \nShchusev State Museum of Architecture
+
+\n\n© Texts by E. Primorskaya, M. Kotova, M. Basyrova, A. Godovanets, I. Nazarov
+
+\n\n© Graphic design and layout by N. Agapova
+
+\n\n© Development by AppTeka
+
+\n\nAny reproduction or use of texts or images without prior written permission of the M. A. Bulgakov Museum is prohibited.
+
+\n\nMoscow, 2015
+    </string>
+
+    <string name="title_activity_text_info">TextInfoActivity</string>
+    <string name="title_activity_routes">RoutesActivity</string>
+    <string name="title_activity_routes_info">RoutesInfoActivity</string>
+    <string name="title_activity_language">LanguageActivity</string>
+    <string name="share_string"> — is one interesting site on the map of Bulgakov\'s Moscow.
+    \nSee the Bulgakov Map app for more information. (<a href="https://play.google.com/store/apps">play.google.com</a>)
+    \n© M. A. Bulgakov Museum
+    </string>
+
+</resources>

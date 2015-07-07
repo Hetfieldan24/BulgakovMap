@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+/build
+/gen
+=======
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+>>>>>>> 83fa82e19c5b44ae9956e5f42ccae44254463f2d

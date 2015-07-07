@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MapboxAndroidSDK/MapboxAndroidSDK.iml" filepath="$PROJECT_DIR$/MapboxAndroidSDK/MapboxAndroidSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MapboxAndroidSDKTestApp/MapboxAndroidSDKTestApp.iml" filepath="$PROJECT_DIR$/MapboxAndroidSDKTestApp/MapboxAndroidSDKTestApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimpleMapBox.iml" filepath="$PROJECT_DIR$/SimpleMapBox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewserver/viewserver.iml" filepath="$PROJECT_DIR$/viewserver/viewserver.iml" />
+    </modules>
+  </component>
+</project>
+

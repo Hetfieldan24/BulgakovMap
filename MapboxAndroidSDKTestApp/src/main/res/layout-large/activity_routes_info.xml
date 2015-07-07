@@ -1,0 +1,348 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/drawer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainLayout">
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+            <RelativeLayout
+                android:id="@+id/backLayout"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:clickable="true">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/back"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/back"
+                    android:contentDescription="@string/image"
+                    android:clickable="false"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/route"
+                android:id="@+id/name"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/belowTopBar"
+            android:background="@drawable/list_bar"
+            android:layout_below="@+id/topBar"
+            android:contentDescription="@string/image"
+            android:layout_marginTop="5dp"/>
+
+        <!-- основной контент -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/belowTopBar"
+            android:layout_above="@id/aboveBottomBar"
+            android:id="@+id/mainContent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/image_layout">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/routeImg"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:contentDescription="@string/image"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/routeName"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/image_layout"
+                    android:gravity="left"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bar"
+                    android:background="@drawable/bar"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/routeName"
+                    android:contentDescription="@string/image"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/description"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:layout_below="@+id/bar"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/routeInfo"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/description"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:gravity="left"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/secondBar"
+                    android:background="@drawable/list_bar"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_below="@+id/routeInfo"
+                    android:contentDescription="@string/image"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:id="@+id/createRouteLayout"
+                    android:layout_below="@+id/secondBar"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/create_route"
+                        android:id="@+id/createRouteTextView"
+                        android:textSize="24sp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="#2da44a"
+                        android:clickable="false"
+                        android:paddingTop="5dp"/>
+
+                    <ImageButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/createRouteButton"
+                        android:background="@drawable/routes_button_active"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_alignRight="@+id/createRouteTextView"
+                        android:layout_alignEnd="@+id/createRouteTextView"
+                        android:clickable="false"
+                        android:contentDescription="@string/image"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/aboveBottomBar"
+            android:background="@drawable/list_bar"
+            android:layout_above="@+id/bottomBar"
+            android:contentDescription="@string/image"
+            android:layout_marginTop="5dp"/>
+
+        <!-- нижний бар -->
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:clickable="false"
+            android:layout_alignParentBottom="true"
+            android:weightSum="100">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:layout_weight="25"
+                android:id="@+id/placesLayout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/placesButton"
+                    android:background="@drawable/places_button_large"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:clickable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/places"
+                    android:id="@+id/placesTextView"
+                    android:textSize="20sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:layout_weight="25"
+                android:id="@+id/routesLayout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/routesButton"
+                    android:background="@drawable/routes_button_active_large"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@string/image"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:clickable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/routes"
+                    android:id="@+id/routesTextView"
+                    android:textSize="20sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:layout_weight="25"
+                android:id="@+id/searchLayout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/searchButton"
+                    android:background="@drawable/search_button_large"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@string/image"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:clickable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search"
+                    android:id="@+id/searchTextView"
+                    android:textSize="20sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:layout_weight="25"
+                android:id="@+id/infoLayout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/infoButton"
+                    android:background="@drawable/info_button_large"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@string/image"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:clickable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info"
+                    android:id="@+id/infoTextView"
+                    android:textSize="20sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

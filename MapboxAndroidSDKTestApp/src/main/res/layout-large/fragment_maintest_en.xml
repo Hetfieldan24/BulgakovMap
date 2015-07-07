@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/mapContainer">
+
+    <com.mapbox.mapboxsdk.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end|top"
+        mapbox:mapid="bulgakovmap.l75gjll2"
+        mapbox:accessToken="pk.eyJ1IjoiYnVsZ2Frb3ZtYXAiLCJhIjoiVEZJekxqTSJ9.uUPh73FXtA1xwHQ7188TcA">
+    </com.mapbox.mapboxsdk.views.MapView>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationButton"
+        android:background="@drawable/location"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:contentDescription="@string/image"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="170dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/bubble"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainLayout">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:textSize="18sp"
+                    android:text=""
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:textColor="@android:color/black"/>
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/go_to"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image"
+                    android:clickable="false"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/labelButton"
+                android:layout_below="@+id/mainLayout"
+                android:layout_centerInParent="true"
+                android:background="@drawable/border_infowindow"
+                android:layout_marginTop="5dp"
+                android:text="@string/mark_passed"
+                android:textColor="@color/green"
+                android:textSize="12sp"
+                android:layout_marginBottom="10dp"/>
+
+        </RelativeLayout>
+
+        <com.mapbox.mapboxsdk.views.TipView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

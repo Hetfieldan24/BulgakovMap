@@ -1,0 +1,1 @@
+include ':MapboxAndroidSDKTestApp', ':MapboxAndroidSDK', ':viewserver'

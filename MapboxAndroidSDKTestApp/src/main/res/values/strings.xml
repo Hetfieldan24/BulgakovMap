@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_id">411469049032943</string>
+    <string name="share_with_facebook">Поделиться с facebook</string>
+    <string name="share_without_facebook">Поделиться другими приложениями</string>
+    <string name="title_about_project">О проекте</string>
+    <string name="title_bulg_and_moscow">Михаил Булгаков и Москва</string>
+    <string name="title_about_app">О приложении</string>
+    <string name="create_response">Написать отзыв</string>
+    <string name="options">Настройки</string>
+    <string name="sponsor">Спонсор</string>
+    <string name="place">Место</string>
+    <string name="route">Маршрут</string>
+    <string name="mark_passed">Отметить как пройденное</string>
+    <string name="uncheck">Снять отметку</string>
+    <string name="no_result">Ничего не найдено</string>
+    <string name="title_info">Информация</string>
+    <string name="more">Подробнее</string>
+    <string name="show_on_map">Показать на карте</string>
+    <string name="share">Поделиться</string>
+    <string name="title_routes">Маршруты</string>
+    <string name="create_route">Проложить маршрут</string>
+    <string name="title_search">Поиск</string>
+    <string name="lng_rus">Русский</string>
+    <string name="lng_en">English</string>
+    <string name="appName">Булгаковская Москва</string>
+    <string name="mainTestMap">Карта</string>
+    <string name="alternateTestMap">Alternate Test Map</string>
+    <string name="markersTestMap">Markers Test</string>
+    <string name="itemizedOverlayTestMap">ItemizedIconOverlay</string>
+    <string name="localGeoJSONTestMap">Local GeoJSON</string>
+    <string name="diskCacheDisabledTestMap">DiskCache Disabled</string>
+    <string name="offlineCacheTestMap">Offline Cache</string>
+    <string name="programmaticTestMap">Programmatic</string>
+    <string name="webSourceTileTestMap">WebSourceTile</string>
+    <string name="locateMeTestMap">Locate Me</string>
+    <string name="saveMapOfflineTestMap">Save Map Offline</string>
+    <string name="pathTestMap">PathOverlay</string>
+    <string name="bingTestMap">Bing Test Map</string>
+    <string name="mapbox_id_terrain">poloten4ik4.k8e916a7</string>
+    <string name="drawerOpen">Open Nav Drawer</string>
+    <string name="drawerClose">Close Nav Drawer</string>
+    <string name="dataOn">Data On</string>
+    <string name="dataOff">Data Off</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saveMapButtonText">Save Map</string>
+    <string name="loadMapButtonText">Load Map</string>
+    <string name="deleteMapsButtonText">Delete Map</string>
+    <string name="resetMapButtonText">Reset</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_places_list">PlacesListActivity</string>
+    <string name="title_activity_activity_for_gps">ActivityForGPS</string>
+    <string name="title_activity_places_cards">PlacesCardsActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_tag_place">TagPlaceActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="map">Карта</string>
+    <string name="list">Список</string>
+    <string name="places">Места</string>
+    <string name="routes">Маршруты</string>
+    <string name="search">Поиск</string>
+    <string name="info">Информация</string>
+    <string name="image">Изображение</string>
+    <string name="about_project">Михаил Булгаков — один из самых “московских” писателей XX века. Его книги наполнены названиями знакомых улиц и переулков, приметами московских мест, а Москва, в свою очередь, — булгаковскими историями. Дома и улицы, где Булгаков жил или часто бывал, нередко оказываются теми же улицами и домами, где живут и действуют герои его книг. Поэтому на карте, которую вы держите в руках, два города — литературный и реальный, и определить, где кончается один и начинается другой, бывает трудно. Авторы не ставили перед собой задачу разделить их, скорее — предложить читателю вместе искать пути, соединяющие Москву с любимым и загадочным литературным пространством, созданным Михаилом Булгаковым.
+Большинство адресов снабжено подробным описанием и галереей из новых и архивных фотографий. Также в приложении есть несколько экскурсионных маршрутов.</string>
+    <string name="bulg_and_moscow_prolog">Великий город — Москва\nМ. Булгаков (Из дневника)</string>
+    <string name="bulg_and_moscow">\nМихаил Афанасьевич Булгаков приехал в Москву осенью 1921 года, и с тех пор начался его роман с городом. Булгаков много и охотно писал о Москве — в 1922-1924  годах его рассказы о городе и серия очерков «Столица в блокноте» пользовались большим успехом. Булгаков обожал пешие прогулки, исходил Москву вдоль и поперек, знал ее всю — от главных площадей до кривых улочек и переулков. Еще он любил кататься на лыжах — с друзьями, вдоль набережной Москва-реки и в Нескучном саду.
+Особенно тесно писатель был связан с двумя московскими районами — с окрестностями Патриарших и, позднее, с Пречистенкой. Первым постоянным московским адресом писателя стал дом № 10 на Большой Садовой — здесь он прожил почти три года (1921-1924).  Сегодня в бывшей коммунальной квартире № 50 располагается  государственный музей М.А. Булгакова.
+В 1927 году Михаил Булгаков, в ту пору уже известный драматург,  арендовал квартиру на Большой Пироговской. Вся вторая половина 1920-х годов прошла на Пречистенке и прилегающих к ней улочках — здесь жили многие друзья Булгакова. На углу Пречистенки и Чистого переулка писатель поселил почти всемогущего Филиппа Филипповича Преображенского из «Собачьего сердца». Здесь же, неподалеку, в 1934 году Булгаков впервые обзавелся собственным жильем — отдельной квартирой в Нащокинском переулке. Дом, к сожалению, не сохранился.
+Булгаков до сих пор остается самым московским писателем двадцатого века — в его прозе оживает старая Москва. Погружаясь в его книги, мы можем разглядеть в современном городе, искаженном поздними постройками, старые улочки, дома и скверы той Москвы, по которой он так любил гулять.</string>
+    <string name="about_app">Проект подготовлен Музеем М.А. Булгакова
+\nМосква, ул. Большая Садовая, дом 10, подъезд 6, этаж 4, квартира №50
+\n<a href="http://www.bulgakovmuseum.ru">bulgakovmuseum.ru</a> \n<a href="http://www.facebook.com/bulgakovmuseum">facebook.com/bulgakovmuseum</a> \n<a href="http://www.vk.com/bulgakovmuseum">vk.com/bulgakovmuseum</a> \n\n© Фото. А. Акимов, В. Пташенчук, <a href="http://www.pastvu.com">pastvu.com</a>, \nГосударственный научно-исследовательский музей архитектуры им. А.В. Щусева
+
+\n\n© Текст. Е.Приморская, М.Котова, М.Басырова, А.Годованец, И.Назаров
+
+\n\n© Графический дизайн и верстка. Н. Агапова
+
+\n\n© Разработка. AppTeka
+
+\n\nЛюбое копирование и использование текстов и изображений без предварительного согласия ГБУК г.Москвы «Музей М.А. Булгакова» запрещено.
+
+\n\nМосква, 2015</string>
+    <string name="title_activity_language">LanguageActivity</string>
+    <string name="title_activity_routes">RoutesActivity</string>
+    <string name="title_activity_routes_info">RoutesInfoActivity</string>
+    <string name="title_activity_text_info">TextInfoActivity</string>
+    <string name="share_string"> — интересное место на карте булгаковской Москвы.
+    \nПодробнее в приложении Bulgakov Map (<a href="https://play.google.com/store/apps">play.google.com</a>)
+    \n© Музей М.А. Булгакова</string>
+    <string name="title_activity_sharing">SharingActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

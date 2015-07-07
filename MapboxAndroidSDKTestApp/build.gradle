@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.1'
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'checkstyle'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    flatDir {
+        dirs '../libs'
+    }
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 2
+        versionName "2.0"
+        applicationId "com.mapbox.mapboxsdk.android.testapp"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // This is important, it will run lint checks but won't abort build
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile(project(':MapboxAndroidSDK')) {
+        transitive = true
+    }
+    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile files('apache-commons-lang.jar')
+    compile files('universal-image-loader-1.9.3.jar')
+    compile files('commons-io-2.4-sources.jar')
+    compile 'commons-io:commons-io:2.4'
+    compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
+        transitive = true;
+    }
+    compile project(':library')
+    compile project(':facebook')
+}
+
+
+checkstyle {
+    configFile project.file('../checks.xml')
+    showViolations true
+}
+
+android.applicationVariants.all { variant ->
+    def name = variant.buildType.name
+    def checkstyle = project.tasks.create "checkstyle${name.capitalize()}", Checkstyle
+    checkstyle.dependsOn variant.javaCompile
+    checkstyle.source variant.javaCompile.source
+    checkstyle.classpath = project.fileTree(variant.javaCompile.destinationDir)
+    checkstyle.exclude('**/BuildConfig.java')
+    checkstyle.exclude('**/R.java')
+    project.tasks.getByName("check").dependsOn checkstyle
+}
+android {
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}

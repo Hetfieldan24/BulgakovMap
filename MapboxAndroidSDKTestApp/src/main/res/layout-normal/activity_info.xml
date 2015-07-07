@@ -1,0 +1,227 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mapbox.mapboxsdk.android.testapp.activities.InfoActivity"
+    android:paddingBottom="5dp"
+    android:id="@+id/drawer_layout">
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/backLayout"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:clickable="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/left"
+                android:contentDescription="@string/image"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info"
+            android:id="@+id/name"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@android:color/black"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listBar"
+        android:background="@drawable/list_bar"
+        android:layout_below="@+id/topBar"
+        android:contentDescription="@string/image"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listBar"
+        android:layout_above="@+id/aboveBottomBar"
+        android:scrollbarStyle="outsideInset"
+        android:paddingRight="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:scrollingCache="false"
+        android:animationCache="false"
+        android:textColor="@android:color/black"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboveBottomBar"
+        android:background="@drawable/list_bar"
+        android:layout_above="@+id/bottomBar"
+        android:contentDescription="@string/image"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:clickable="false"
+        android:layout_alignParentBottom="true"
+        android:weightSum="100">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:layout_weight="25"
+            android:id="@+id/placesLayout">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/placesButton"
+                android:background="@drawable/places_button"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/image"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:clickable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/places"
+                android:id="@+id/placesTextView"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:layout_weight="25"
+            android:id="@+id/routesLayout">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/routesButton"
+                android:background="@drawable/routes_button"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/image"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:clickable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/routes"
+                android:id="@+id/routesTextView"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:layout_weight="25"
+            android:id="@+id/searchLayout">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchButton"
+                android:background="@drawable/search_button"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/image"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:clickable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search"
+                android:id="@+id/searchTextView"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:layout_weight="25"
+            android:id="@+id/infoLayout">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/infoButton"
+                android:background="@drawable/info_button_active"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/image"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:clickable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info"
+                android:id="@+id/infoTextView"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

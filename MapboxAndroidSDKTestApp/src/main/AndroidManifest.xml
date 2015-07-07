@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mapbox.mapboxsdk.android.testapp"
+    android:installLocation="preferExternal" >
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Ubertesters library user-permissions -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Ubertesters library user-permissions -->
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/appName"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="ubertesters_organization_token"
+            android:value="5cefaa4a-c7e8-11e4-ac3b-22000ac44c54" />
+
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.MainActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:label="@string/appName" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.PlacesCardsActivity"
+            android:label="@string/title_activity_places_cards" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.TagPlaceActivity"
+            android:label="@string/title_activity_tag_place" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.InfoActivity"
+            android:label="@string/title_activity_info" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.LanguageActivity"
+            android:label="@string/title_activity_language" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.TextInfoActivity"
+            android:label="@string/title_activity_text_info" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.RoutesActivity"
+            android:label="@string/title_activity_routes" >
+        </activity>
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.RoutesInfoActivity"
+            android:label="@string/title_activity_routes_info" >
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="319534f5f473911b444b4d0178de7f594929e4a2" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/appName"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider411469049032943"
+            android:exported="true" />
+
+        <activity
+            android:name="com.mapbox.mapboxsdk.android.testapp.activities.SharingActivity"
+            android:label="@string/title_activity_sharing" >
+        </activity>
+    </application>
+
+</manifest>
