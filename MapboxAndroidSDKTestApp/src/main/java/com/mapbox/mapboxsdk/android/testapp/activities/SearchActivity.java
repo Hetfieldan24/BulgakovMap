@@ -77,13 +77,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         globals = Globals.getInstance();
 
-        globals.setFlagCustomInfo("");
-
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bottomBar = (LinearLayout)findViewById(R.id.bottomBar);
         aboveBottomBar = (ImageView)findViewById(R.id.aboveBottomBar);
-        //belowListBar = (ImageView)findViewById(R.id.belowListBar);
         attachKeyboardListeners();
 
         distance = new ArrayList<Integer>();
@@ -238,7 +235,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                             sched.setUrl(readFromFile("urls" + index + ".txt"));
 
                             strokes = pointsFile.get(index).split(",");
-                            tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                            tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                                    Double.parseDouble(strokes[1]));
                             points.add(tempPoint);
 
                             if (!distance.isEmpty())
@@ -283,7 +281,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                                     sched.setUrl(readFromFile("urls" + index + ".txt"));
 
                                     strokes = pointsFile.get(index).split(",");
-                                    tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                                    tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                                            Double.parseDouble(strokes[1]));
                                     points.add(tempPoint);
 
                                     if (!distance.isEmpty())
@@ -327,7 +326,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
                         for(int i = 0; i < nameTagsRoutesArray.get(index).size(); i++)
                         {
-                            if (cs.toString().equalsIgnoreCase(nameTagsRoutesArray.get(index).get(i)))
+                            if (cs.toString().equalsIgnoreCase(nameTagsRoutesArray
+                                    .get(index).get(i)))
                             {
                                 matchExists = true;
 
@@ -599,7 +599,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         // do things when keyboard is shown
         bottomBar.setVisibility(View.GONE);
         aboveBottomBar.setVisibility(View.GONE);
-        //belowListBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -608,7 +607,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         // do things when keyboard is hidden
         bottomBar.setVisibility(View.VISIBLE);
         aboveBottomBar.setVisibility(View.VISIBLE);
-        //belowListBar.setVisibility(View.VISIBLE);
     }
 
     public void clearButtonsBackgrounds()
@@ -632,7 +630,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory()
+                .getAbsolutePath() + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())

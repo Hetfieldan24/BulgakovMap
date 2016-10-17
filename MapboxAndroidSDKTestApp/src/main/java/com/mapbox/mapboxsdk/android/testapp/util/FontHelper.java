@@ -48,9 +48,11 @@ public class FontHelper {
                 for (int i = 0; i < childCount; i++)
                     applyFont(context, viewGroup.getChildAt(i), fontPath);
             } else if (root instanceof TextView)
-                ((TextView) root).setTypeface(Typeface.createFromAsset(context.getAssets(), fontPath));
+                ((TextView) root).setTypeface(Typeface.createFromAsset(context.getAssets(),
+                        fontPath));
         } catch (Exception e) {
-            Log.e("FontHelper ", String.format("Error occured when trying to apply %s font for %s view", fontPath, root));
+            Log.e("FontHelper ", String.format(
+                    "Error occured when trying to apply %s font for %s view", fontPath, root));
             e.printStackTrace();
         }
     }

@@ -39,7 +39,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
     private int green;
     private int grey;
     private ArrayList<String> itemNames;
-    private AsyncTask task;
     private Globals globals;
 
     @Override
@@ -53,7 +52,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
         globals = Globals.getInstance();
 
         globals.setFlagCustomAdapterPlacesList("");
-        globals.setFlagCustomInfo("");
 
         if(savedInstanceState == null && globals.isFirstLaunchRoutesActivity())
         {
@@ -118,7 +116,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
             case R.id.placesLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 placesButton.setBackgroundResource(R.drawable.places_button_active);
@@ -132,7 +129,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
             case R.id.routesLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 routesButton.setBackgroundResource(R.drawable.routes_button_active);
@@ -145,7 +141,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
             case R.id.searchLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 searchButton.setBackgroundResource(R.drawable.search_button_active);
@@ -159,7 +154,6 @@ public class RoutesActivity extends Activity implements View.OnClickListener
             case R.id.infoLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 infoButton.setBackgroundResource(R.drawable.info_button_active);
@@ -270,7 +264,8 @@ public class RoutesActivity extends Activity implements View.OnClickListener
 
     private boolean isNetworkAvailable()
     {
-        ConnectivityManager connectivityManager = (ConnectivityManager)RoutesActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                RoutesActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }

@@ -131,7 +131,8 @@ public class CustomAdapterSingleItem extends BaseAdapter implements OnClickListe
 
                 if(globals.getItemNames().get(mPosition).equals(res.getString(R.string.create_response)))
                 {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps"));
+                    intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps"));
                 }
 
                 intent.putExtra("position", mPosition);
@@ -192,7 +193,8 @@ public class CustomAdapterSingleItem extends BaseAdapter implements OnClickListe
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())

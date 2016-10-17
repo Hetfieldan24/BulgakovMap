@@ -117,7 +117,6 @@ public class InfoActivity extends Activity implements View.OnClickListener
             case R.id.placesLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 placesButton.setBackgroundResource(R.drawable.places_button_active);
@@ -131,7 +130,6 @@ public class InfoActivity extends Activity implements View.OnClickListener
             case R.id.routesLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 routesButton.setBackgroundResource(R.drawable.routes_button_active);
@@ -146,7 +144,6 @@ public class InfoActivity extends Activity implements View.OnClickListener
             case R.id.searchLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 searchButton.setBackgroundResource(R.drawable.search_button_active);
@@ -160,7 +157,6 @@ public class InfoActivity extends Activity implements View.OnClickListener
             case R.id.infoLayout:
 
                 globals.setPositionMain(-1);
-                globals.setPositionCustomInfo(-1);
 
                 clearButtonsBackgrounds();
                 infoButton.setBackgroundResource(R.drawable.info_button_active);
@@ -177,21 +173,21 @@ public class InfoActivity extends Activity implements View.OnClickListener
     protected void onStart()
     {
         super.onStart();
-        globals.setCurrentlyRunningInfoActivity(true); //Store status of Activity somewhere like in shared //preference
+        globals.setCurrentlyRunningInfoActivity(true);
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-        globals.setCurrentlyRunningInfoActivity(false);//Store status of Activity somewhere like in shared //preference
+        globals.setCurrentlyRunningInfoActivity(false);
     }
 
     @Override
     protected void onDestroy()
     {
-        super.onStop();
-        globals.setCurrentlyRunningInfoActivity(false);//Store status of Activity somewhere like in shared //preference
+        super.onDestroy();
+        globals.setCurrentlyRunningInfoActivity(false);
     }
 
     public void clearButtonsBackgrounds()

@@ -123,7 +123,8 @@ public class RoutesInfoActivity extends Activity implements View.OnClickListener
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory()
+                .getAbsolutePath() + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())

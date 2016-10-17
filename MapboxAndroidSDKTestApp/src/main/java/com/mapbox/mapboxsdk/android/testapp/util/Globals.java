@@ -5,14 +5,10 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 
 import java.util.ArrayList;
 
-/**
- * Created by hetfieldan24 on 02.11.2014.
- */
 public class Globals
 {
     private static volatile Globals instance;
 
-    private ArrayList<Marker> markersMainTest;
     private ArrayList<String> itemNames;
     private ArrayList<LatLng> pointsSearch;
     private ArrayList<LatLng> pointsTagPlace;
@@ -29,16 +25,7 @@ public class Globals
     private int positionTagPlace;
     private int positionPlacesList;
     private String flagCustomAdapterPlacesList = "";
-    private int positionCustomInfo;
-    private String flagCustomInfo = "";
     private int positionMain = -1;
-    private int positionCustomInside = -1;
-
-    //GPSTracker
-    // The minimum distance to change Updates in meters
-    private final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
-    // The minimum time between updates in milliseconds
-    private final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
 
     public static Globals getInstance()
     {
@@ -56,16 +43,6 @@ public class Globals
             }
         }
         return instance;
-    }
-
-    public void setMarkersMainTest(ArrayList<Marker> markersMainTest)
-    {
-        this.markersMainTest = markersMainTest;
-    }
-
-    public ArrayList<Marker> getMarkersMainTest()
-    {
-        return markersMainTest;
     }
 
     public void setItemNames(ArrayList<String> itemNames)
@@ -228,34 +205,14 @@ public class Globals
         return flagCustomAdapterPlacesList;
     }
 
-    public void setPositionCustomInfo(int positionCustomInfo)
-    {
-        this.positionCustomInfo = positionCustomInfo;
-    }
-
-    public int getPositionCustomInfo()
-    {
-        return positionCustomInfo;
-    }
-
-    public void setFlagCustomInfo(String flagCustomInfo)
-    {
-        this.flagCustomInfo = flagCustomInfo;
-    }
-
-    public String getFlagCustomInfo()
-    {
-        return flagCustomInfo;
-    }
-
     public long getMIN_DISTANCE_CHANGE_FOR_UPDATES()
     {
-        return MIN_DISTANCE_CHANGE_FOR_UPDATES;
+        return (long) 10;
     }
 
     public long getMIN_TIME_BW_UPDATES()
     {
-        return MIN_TIME_BW_UPDATES;
+        return (long) (1000 * 60);
     }
 
     public void setPositionMain(int positionMain)
@@ -266,15 +223,5 @@ public class Globals
     public int getPositionMain()
     {
         return positionMain;
-    }
-
-    public void setPositionCustomInside(int positionCustomInside)
-    {
-        this.positionCustomInside = positionCustomInside;
-    }
-
-    public int getPositionCustomInside()
-    {
-        return positionCustomInside;
     }
 }

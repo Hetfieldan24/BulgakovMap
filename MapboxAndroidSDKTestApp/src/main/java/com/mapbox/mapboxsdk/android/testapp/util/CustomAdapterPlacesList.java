@@ -24,7 +24,6 @@ public class CustomAdapterPlacesList extends BaseAdapter   implements OnClickLis
     private final Fragment fragment;
     private final Activity activity;
     private ArrayList data;
-    private Globals globals;
 
     /*************  CustomAdapter Constructor *****************/
     public CustomAdapterPlacesList(Fragment a, ArrayList d)
@@ -109,7 +108,8 @@ public class CustomAdapterPlacesList extends BaseAdapter   implements OnClickLis
 
             if(fragment != null)
             {
-                gothic = Typeface.createFromAsset(fragment.getActivity().getAssets(), "fonts/GTH75.otf");
+                gothic = Typeface.createFromAsset(fragment.getActivity().getAssets(),
+                        "fonts/GTH75.otf");
             }
             else
             {
@@ -157,7 +157,7 @@ public class CustomAdapterPlacesList extends BaseAdapter   implements OnClickLis
         @Override
         public void onClick(View arg0)
         {
-            globals = Globals.getInstance();
+            Globals globals = Globals.getInstance();
             if(globals.getFlagCustomAdapterPlacesList().equals("List"))
             {
                 PlacesListFragment sct = (PlacesListFragment) fragment;

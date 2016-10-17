@@ -31,7 +31,8 @@ import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener, Thread.UncaughtExceptionHandler
+public class MainActivity extends ActionBarActivity
+        implements View.OnClickListener, Thread.UncaughtExceptionHandler
 {
     private Button mapButton, listButton;
     private ImageButton placesButton, routesButton, searchButton, infoButton;
@@ -39,8 +40,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private int white;
     private int green;
     private int grey;
-    private LinearLayout bottomBar;
-    private boolean hideBar = true;
     private Globals globals;
 
     @Override
@@ -116,8 +115,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         placesButton.setBackgroundResource(R.drawable.places_button_active);
         placesTextView.setTextColor(green);
 
-        //firstLaunch = savedInstanceState == null && firstLaunch;
-
         if(savedInstanceState == null && globals.isFirstLaunchMainTest())
         {
             globals.setFirstLaunchMainTest(true);
@@ -142,8 +139,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             globals.setLanguage("en");
             selectItem(2);
         }
-
-        bottomBar = (LinearLayout)findViewById(R.id.bottomBar);
 
         if(globals.isFlagRoutesInfo())
         {
@@ -187,7 +182,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         switch(v.getId())
         {
             case R.id.mapButton:
-                //locationButton.setVisibility(View.VISIBLE);
 
                 globals.setPositionMain(-1);
 
@@ -211,8 +205,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 globals.setPositionMain(-1);
 
-                //locationButton.setVisibility(View.GONE);
-
                 listButton.setBackgroundResource(R.drawable.list_button);
                 mapButton.setBackgroundResource(R.drawable.inactive_button_map);
 
@@ -225,8 +217,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.placesLayout:
 
                 globals.setPositionMain(-1);
-
-                //locationButton.setVisibility(View.VISIBLE);
 
                 clearButtonsBackgrounds();
                 placesButton.setBackgroundResource(R.drawable.places_button_active);
@@ -275,24 +265,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 startActivity(new Intent(MainActivity.this, InfoActivity.class));
                 break;
-
-            case R.id.drawer_layout:
-                if(hideBar)
-                {
-                    bottomBar = (LinearLayout) findViewById(R.id.bottomBar);
-                    slideToBottom(bottomBar);
-                    ImageView aboveBottomBar = (ImageView)findViewById(R.id.aboveBottomBar);
-                    slideToBottom(aboveBottomBar);
-                }
-                else
-                {
-                    bottomBar = (LinearLayout) findViewById(R.id.bottomBar);
-                    slideToTop(bottomBar);
-                    ImageView aboveBottomBar = (ImageView)findViewById(R.id.aboveBottomBar);
-                    slideToTop(aboveBottomBar);
-                }
-                hideBar = !hideBar;
-                break;
         }
     }
 
@@ -336,58 +308,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         routesTextView.setText(R.string.routes);
         searchTextView.setText(R.string.search);
         infoTextView.setText(R.string.info);
-    }
-
-    public void slideToBottom(View view)
-    {
-        /*
-        TranslateAnimation animate = new TranslateAnimation(0,0,0,view.getHeight());
-        animate.setDuration(500);
-        animate.setFillAfter(true);
-        view.startAnimation(animate);
-        view.setVisibility(View.GONE);
-        */
-    }
-
-    public void slideToTop(View view){
-        /*
-        TranslateAnimation animate = new TranslateAnimation(0,0,0,0);
-        animate.setDuration(500);
-        animate.setFillAfter(true);
-        view.startAnimation(animate);
-        view.setVisibility(View.GONE);
-        view.setBackgroundColor(white);
-        */
-    }
-
-    public void writeInFile(ArrayList arrayList, String fileName)
-    {
-        try
-        {
-            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
-            File sdPath = new File(FILEPATH);
-
-            if (!sdPath.exists())
-            {
-                sdPath.mkdirs();
-            }
-
-            File file =
-                    new File(FILEPATH, fileName);
-            FileOutputStream outputstream = new FileOutputStream(file);
-
-            for(int index = 0; index < arrayList.size(); index++)
-            {
-                outputstream.write(arrayList.get(index).toString().getBytes("windows-1251"));
-                if(index != arrayList.size() - 1)
-                    outputstream.write("\n".getBytes("windows-1251"));
-            }
-
-            outputstream.close();
-        } catch (Throwable t)
-        {
-            Log.e("SaveFile Error: ", t.toString());
-        }
     }
 
     @Override

@@ -76,7 +76,6 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
     private RelativeLayout imageParentLayout;
     private CallbackManager callbackManager;
     private String url="";
-    private ImageView view;
     private LinePageIndicator mIndicator;
     private ArrayList<Bitmap> tempBmpArray;
 
@@ -181,7 +180,7 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
         placesButton.setBackgroundResource(R.drawable.places_button_active);
         placesTextView.setTextColor(green);
 
-        view = (ImageView)viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
+        ImageView view = (ImageView) viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
     }
 
     @Override
@@ -326,150 +325,9 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                     @Override
                     public void onClick(View v)
                     {
-                        /*
-                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                        sharingIntent.setType("text/plain");
-                        String shareBody = fullNameTextView.getText() + getString(R.string.share_string);
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                        startActivity(Intent.createChooser(sharingIntent, "Поделиться"));
-                        */
                         shareWithoutFacebookFunction(PlacesCardsActivity.this, fullNameTextView.getText() + getResources().getString(R.string.share_string));
                     }
                 });
-                /*
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = fullNameTextView.getText().toString();
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Поделиться"));
-                */
-
-                /*
-                ImageView view = (ImageView)viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
-
-                Intent intent = null;
-
-                Uri bmpUri = getLocalBitmapUri(view);
-                intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-                intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_TEXT, fullNameTextView.getText() + getString(R.string.share_string));
-                intent.putExtra(Intent.EXTRA_TITLE, "my awesome caption in the EXTRA_TITLE field");
-                startActivity(Intent.createChooser(intent,"compatible apps:"));
-                */
-
-
-                /*
-                ImageView view = (ImageView) viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
-
-                Uri bmpUri = getLocalBitmapUri(view);
-
-                ShareDialog shareDialog;
-
-                FacebookSdk.sdkInitialize(getApplicationContext());
-                callbackManager = CallbackManager.Factory.create();
-                shareDialog = new ShareDialog(this);
-                // this part is optional
-                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>()
-                {
-                    @Override
-                    public void onSuccess(Sharer.Result result)
-                    {
-
-                    }
-
-                    @Override
-                    public void onCancel()
-                    {
-                        Toast.makeText(PlacesCardsActivity.this, "registerCallback was cancelled!", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(FacebookException error)
-                    {
-                        Toast.makeText(PlacesCardsActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                if (ShareDialog.canShow(ShareLinkContent.class))
-                {
-                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                            .setContentTitle(fullNameTextView.getText() + getString(R.string.share_string))
-                            .setContentDescription(
-                                    " ")
-                            .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
-                            .setImageUrl(Uri.parse("http://mobile.bulgakovmuseum.ru/" + url))
-                            .build();
-
-                    shareDialog.show(linkContent);
-                }
-                else
-                {
-                    Toast.makeText(PlacesCardsActivity.this, "can't share content", Toast.LENGTH_LONG).show();
-                }
-                */
-
-
-                /*
-                Resources resources = getResources();
-
-                Intent emailIntent = new Intent();
-                emailIntent.setAction(Intent.ACTION_SEND);
-                // Native email client doesn't currently support HTML, but it doesn't hurt to try in case they fix it
-                emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("share_email_native"));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "share_email_subject");
-                emailIntent.setType("message/rfc822");
-
-                PackageManager pm = getPackageManager();
-                Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                sendIntent.setType("text/plain");
-
-
-                Intent openInChooser = Intent.createChooser(emailIntent, "share_chooser_text");
-
-                List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
-                List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();
-                for (int i = 0; i < resInfo.size(); i++) {
-                    // Extract the label, append it, and repackage it in a LabeledIntent
-                    ResolveInfo ri = resInfo.get(i);
-                    String packageName = ri.activityInfo.packageName;
-                    if(packageName.contains("android.email")) {
-                        emailIntent.setPackage(packageName);
-                    } else if(packageName.contains("twitter") || packageName.contains("facebook") || packageName.contains("mms") || packageName.contains("android.gm")) {
-                        Intent intent = new Intent();
-                        intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
-                        intent.setAction(Intent.ACTION_SEND);
-                        intent.setType("text/plain");
-                        if(packageName.contains("twitter")) {
-                            intent.putExtra(Intent.EXTRA_TEXT, "share_twitter");
-                        } else if(packageName.contains("facebook")) {
-                            // Warning: Facebook IGNORES our text. They say "These fields are intended for users to express themselves. Pre-filling these fields erodes the authenticity of the user voice."
-                            // One workaround is to use the Facebook SDK to post, but that doesn't allow the user to choose how they want to share. We can also make a custom landing page, and the link
-                            // will show the <meta content ="..."> text from that page with our link in Facebook.
-                            intent.putExtra(Intent.EXTRA_TEXT, "share_facebook");
-                        } else if(packageName.contains("mms")) {
-                            intent.putExtra(Intent.EXTRA_TEXT, "share_sms");
-                        } else if(packageName.contains("android.gm")) {
-                            intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("share_email_gmail"));
-                            intent.putExtra(Intent.EXTRA_SUBJECT, "share_email_subject");
-                            intent.setType("message/rfc822");
-                        }
-
-                        intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
-                    }
-                }
-
-                // convert intentList to array
-                LabeledIntent[] extraIntents = intentList.toArray( new LabeledIntent[ intentList.size() ]);
-
-                openInChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
-                startActivity(openInChooser);
-                */
-
-
-                //shareWithoutFacebook(PlacesCardsActivity.this, "ASDASDASDASD");
 
                 break;
 
@@ -588,7 +446,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                 {
                     if(!imageUrlsFromServer.get(index).equals("null"))
                     {
-                        imageUrlsFromServer.set(index, "http://mobile.bulgakovmuseum.ru/" + imageUrlsFromServer.get(index));
+                        imageUrlsFromServer.set(index, "http://mobile.bulgakovmuseum.ru/"
+                                + imageUrlsFromServer.get(index));
                     }
                     else
                     {
@@ -612,7 +471,7 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                             bmpArray.add(bmps.get(i));
                         }
                         Log.e("bmpArray", bmpArray.toString());
-                        adapter = new ImageAdapter(PlacesCardsActivity.this, bmpArray);
+                        adapter = new ImageAdapter(bmpArray);
                         viewPager.setAdapter(adapter);
                         mIndicator = (LinePageIndicator)findViewById(R.id.indicator);
                         mIndicator.setViewPager(viewPager);
@@ -662,12 +521,12 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                                                         ))
                                                 {
                                                     flag = true;
-                                                    Log.e("tempBmpArray before reverse", tempBmpArray.toString());
+                                                    Log.e("tempBmpArray before rev", tempBmpArray.toString());
                                                     //Collections.reverse(tempBmpArray);
-                                                    Log.e("tempBmpArray after reverse", tempBmpArray.toString());
+                                                    Log.e("tempBmpArray after rev", tempBmpArray.toString());
 
                                                     ImageAdapter adapter =
-                                                            new ImageAdapter(PlacesCardsActivity.this, tempBmpArray);
+                                                            new ImageAdapter(tempBmpArray);
                                                     viewPager.setAdapter(adapter);
                                                     mIndicator = (LinePageIndicator) findViewById(R.id.indicator);
                                                     mIndicator.setViewPager(viewPager);
@@ -675,10 +534,10 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                                                 else
                                                 {
                                                     flag = false;
-                                                    Log.e("loadedBitmaps without reverse", loadedBitmaps.toString());
+                                                    Log.e("loadedBit without rev", loadedBitmaps.toString());
 
                                                     ImageAdapter adapter =
-                                                            new ImageAdapter(PlacesCardsActivity.this, loadedBitmaps);
+                                                            new ImageAdapter(loadedBitmaps);
                                                     viewPager.setAdapter(adapter);
                                                     mIndicator = (LinePageIndicator) findViewById(R.id.indicator);
                                                     mIndicator.setViewPager(viewPager);
@@ -742,7 +601,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment
+                .getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())
@@ -780,36 +640,6 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
     @Override
     protected void onDestroy()
     {
-        /*
-        if(bmps != null)
-        {
-            if(!bmps.isEmpty())
-            for (Bitmap bmp : bmps)
-            {
-                bmp.recycle();
-            }
-        }
-
-        if(loadedBitmaps != null)
-        {
-            if(!loadedBitmaps.isEmpty())
-            for (Bitmap loadedBitmap : loadedBitmaps)
-            {
-                loadedBitmap.recycle();
-            }
-        }
-
-        if(bmpArray != null)
-        {
-            if(!bmpArray.isEmpty())
-            {
-                for (Bitmap bmp : bmpArray)
-                {
-                    bmp.recycle();
-                }
-            }
-        }
-        */
         super.onDestroy();
     }
 
@@ -822,7 +652,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
             imageParentLayout.setVisibility(View.VISIBLE);
         }
         layoutRemove.setVisibility(View.GONE);
-        ImageView view = (ImageView)viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
+        ImageView view = (ImageView)viewPager
+                .findViewWithTag("current_image" + viewPager.getCurrentItem());
         if(view != null)
         {
             imageParentLayout.setVisibility(View.VISIBLE);
@@ -853,7 +684,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
             try
             {
                 File file = new File(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS), "share_image_" + System.currentTimeMillis() + ".png");
+                        Environment.DIRECTORY_DOWNLOADS), "share_image_"
+                        + System.currentTimeMillis() + ".png");
                 file.getParentFile().mkdirs();
                 FileOutputStream out = new FileOutputStream(file);
                 bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
@@ -876,7 +708,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
 
     public void shareWithoutFacebookFunction(Context context, String text)
     {
-        ImageView view = (ImageView)viewPager.findViewWithTag("current_image" + viewPager.getCurrentItem());
+        ImageView view = (ImageView)viewPager
+                .findViewWithTag("current_image" + viewPager.getCurrentItem());
 
         Uri bmpUri = getLocalBitmapUri(view);
 
@@ -885,7 +718,9 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
         Intent template = new Intent(Intent.ACTION_SEND);
         template.putExtra(Intent.EXTRA_STREAM, bmpUri);
         template.setType("image/*");
-        template.putExtra(Intent.EXTRA_TEXT, fullNameTextView.getText() + getString(R.string.share_string));
+        template.putExtra
+                (Intent.EXTRA_TEXT,
+                        fullNameTextView.getText() + getString(R.string.share_string));
         List<ResolveInfo> resolveInfos = context.getPackageManager().
                 queryIntentActivities(template, 0);
 
@@ -898,7 +733,8 @@ public class PlacesCardsActivity extends ActionBarActivity implements View.OnCli
                 Intent target = new Intent(android.content.Intent.ACTION_SEND);
                 target.putExtra(Intent.EXTRA_STREAM, bmpUri);
                 target.setType("image/*");
-                target.putExtra(Intent.EXTRA_TEXT, fullNameTextView.getText() + getString(R.string.share_string));
+                target.putExtra(Intent.EXTRA_TEXT,
+                        fullNameTextView.getText() + getString(R.string.share_string));
                 target.setPackage(packageName);
                 targets.add(target);
             }

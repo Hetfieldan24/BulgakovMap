@@ -23,7 +23,6 @@ public class TextInfoActivity extends Activity implements View.OnClickListener
     private ImageButton infoButton;
     private TextView placesTextView, routesTextView, searchTextView, infoTextView;
     private int green, grey;
-    private RelativeLayout backLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,24 +57,6 @@ public class TextInfoActivity extends Activity implements View.OnClickListener
             name.setText(globals.getItemNames().get(position));
         }
 
-        //RelativeLayout layout = (RelativeLayout)findViewById(R.id.nameLayout);
-        //RelativeLayout layoutCenter = (RelativeLayout)findViewById(R.id.nameLayoutCenter);
-
-        /*
-        if(!globals.getItemNames().get(position).equals(res.getString(R.string.bulg_and_moscow)))
-        {
-            nameCenter.setText(globals.getItemNames().get(position));
-            layout.setVisibility(View.GONE);
-            layoutCenter.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            name.setText(globals.getItemNames().get(position));
-            layout.setVisibility(View.VISIBLE);
-            layoutCenter.setVisibility(View.GONE);
-        }
-        */
-
         green = res.getColor(R.color.green);
         grey = res.getColor(R.color.grey);
 
@@ -101,7 +82,7 @@ public class TextInfoActivity extends Activity implements View.OnClickListener
         routesButton = (ImageButton)findViewById(R.id.routesButton);
         searchButton = (ImageButton)findViewById(R.id.searchButton);
         infoButton = (ImageButton)findViewById(R.id.infoButton);
-        backLayout = (RelativeLayout) findViewById(R.id.backLayout);
+        RelativeLayout backLayout = (RelativeLayout) findViewById(R.id.backLayout);
 
         placesTextView = (TextView)findViewById(R.id.placesTextView);
         routesTextView = (TextView)findViewById(R.id.routesTextView);

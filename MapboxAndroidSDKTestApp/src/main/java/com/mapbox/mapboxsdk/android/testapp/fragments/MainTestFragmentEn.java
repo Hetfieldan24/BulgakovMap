@@ -70,18 +70,14 @@ import java.util.ArrayList;
 public class MainTestFragmentEn extends Fragment implements MapboxConstants, OfflineMapDownloaderListener
 {
     private MapView mv;
-    private String mainMap = "bulgakovmap.l75gjll2";
     private SharedPreferences prefs = null;
     private ArrayList<Integer> distance;
     private AsyncTask updateTask;
     private ArrayList<LatLng> points;
-    private final String TAG = "SaveMapOfflineTestFragment";
     private boolean saveMapIndicator = true;
     private ArrayList<Marker> markers;
     private Globals globals;
     private int matchIndex = -1;
-    private ImageButton imageButton;
-    private RelativeLayout frameLayout;
     private LinearLayout bubble;
     private TextView bubbleTitle;
     private Button labelButton;
@@ -91,7 +87,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
     private boolean markersShowed = false;
     private ArrayList<Integer> indexesNames;
     private ArrayList<Integer> indexesPoints;
-    private RelativeLayout mainLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -101,7 +96,7 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
         indexesPoints = new ArrayList<Integer>();
         indexesNames = new ArrayList<Integer>();
 
-        mainLayout = (RelativeLayout)view.findViewById(R.id.mainLayout);
+        RelativeLayout mainLayout = (RelativeLayout) view.findViewById(R.id.mainLayout);
         bubble = (LinearLayout)view.findViewById(R.id.bubble);
         bubbleTitle = (TextView)view.findViewById(R.id.title);
         mainLayout.setOnClickListener(new View.OnClickListener()
@@ -129,7 +124,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                     placesTextMain = readFromFile("textMainEnArray.txt");
                 }
 
-                globals.setPositionCustomInfo(positionMain);
                 Intent intent = new Intent(getActivity(), PlacesCardsActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -158,21 +152,18 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                     Log.e("positionMain ", String.valueOf(positionMain));
                 }
 
-                globals.setFlagCustomInfo("CustomInfoWindow");
-
                 globals.setFlagCustomAdapterPlacesList("Main");
 
                 getActivity().startActivity(intent);
             }
         });
 
-        frameLayout = (RelativeLayout)view.findViewById(R.id.mapContainer);
-
         globals = Globals.getInstance();
 
         markers = new ArrayList<Marker>();
         mv = (MapView) view.findViewById(R.id.mapview);
 
+        String mainMap = "bulgakovmap.l75gjll2";
         replaceMapView(mainMap);
         mv.loadFromGeoJSONURL("https://gist.githubusercontent.com/bleege/133920f60eb7a334430f/raw/5392bad4e09015d3995d6153db21869b02f34d27/map.geojson");
 
@@ -193,11 +184,13 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                         if (positionMain != -1)
                         {
                             markers.get(positionMain)
-                                    .setIcon(new Icon(getActivity().getResources().getDrawable(R.drawable.inactive_place)));
+                                    .setIcon(new Icon(getActivity()
+                                            .getResources().getDrawable(R.drawable.inactive_place)));
                         } else
                         {
                             markers.get(globals.getPositionPlacesList())
-                                    .setIcon(new Icon(getActivity().getResources().getDrawable(R.drawable.inactive_place)));
+                                    .setIcon(new Icon(getActivity()
+                                            .getResources().getDrawable(R.drawable.inactive_place)));
                         }
                     }
                     else
@@ -207,18 +200,20 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                         if (positionMain != -1)
                         {
                             markers.get(positionMain)
-                                    .setIcon(new Icon(getActivity().getResources().getDrawable(R.drawable.active_place)));
+                                    .setIcon(new Icon(getActivity()
+                                            .getResources().getDrawable(R.drawable.active_place)));
                         } else
                         {
                             markers.get(globals.getPositionPlacesList())
-                                    .setIcon(new Icon(getActivity().getResources().getDrawable(R.drawable.active_place)));
+                                    .setIcon(new Icon(getActivity()
+                                            .getResources().getDrawable(R.drawable.active_place)));
                         }
                     }
                 }
             }
         });
 
-        imageButton = (ImageButton) view.findViewById(R.id.locationButton);
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.locationButton);
         imageButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -228,7 +223,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
             }
         });
 
-        prefs = getActivity().getSharedPreferences("com.mapbox.mapboxsdk.android.testapp", Context.MODE_PRIVATE);
+        prefs = getActivity().getSharedPreferences("com.mapbox.mapboxsdk.android.testapp",
+                Context.MODE_PRIVATE);
 
         distance = new ArrayList<Integer>();
         points = new ArrayList<LatLng>();
@@ -272,34 +268,12 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 }
                 else
                 {
-                    /*
-                    RelativeLayout topBar = (RelativeLayout)getActivity().findViewById(R.id.topBar);
-
-                    RelativeLayout topBarRoutes = (RelativeLayout)getActivity().findViewById(R.id.topBarRoutes);
-                    ImageView belowTopBar = (ImageView)getActivity().findViewById(R.id.belowTopBarRoutes);
-                    RelativeLayout backLayout = (RelativeLayout)getActivity().findViewById(R.id.backLayout);
-
-                    topBar.setVisibility(View.GONE);
-
-                    topBarRoutes.setVisibility(View.VISIBLE);
-                    belowTopBar.setVisibility(View.VISIBLE);
-
-                    backLayout.setOnClickListener(new View.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            getActivity().finish();
-                        }
-                    });
-                    */
                     showRoutesMarkers();
                 }
             }
         }
         else
         {
-            loadMap();
             if(!globals.isFlagRoutesInfo())
             {
                 showMarkers();
@@ -332,10 +306,10 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
                 for(int i = 0; i < markers.size(); i++)
                 {
-                    if (markers.get(i).getPoint().distanceTo(globals.getPointsTagPlace().get(globals.getPositionTagPlace())) <= 1)
+                    if (markers.get(i).getPoint().distanceTo(globals.getPointsTagPlace()
+                            .get(globals.getPositionTagPlace())) <= 1)
                     {
                         matchIndex = i;
-                        //closeBubble(i);
                     }
                 }
                 positionMain = matchIndex;
@@ -353,10 +327,10 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
                 for(int i = 0; i < markers.size(); i++)
                 {
-                    if (markers.get(i).getPoint().distanceTo(globals.getPointsSearch().get(globals.getPositionSearchActivity())) <= 1)
+                    if (markers.get(i).getPoint().distanceTo(globals.getPointsSearch()
+                            .get(globals.getPositionSearchActivity())) <= 1)
                     {
                         matchIndex = i;
-                        //closeBubble(i);
                     }
                 }
                 positionMain = matchIndex;
@@ -386,12 +360,14 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
             String[] strokes;
             LatLng tempPoint;
             LatLng firstPoint = new LatLng(55.7673, 37.5934);
-            ArrayList<String> routesPointsFile = readFromFile("routesPoints" + globals.getPositionRoutesInfo() + ".txt");
+            ArrayList<String> routesPointsFile = readFromFile("routesPoints"
+                    + globals.getPositionRoutesInfo() + ".txt");
 
             for(int index = 0; index < routesPointsFile.size(); index++)
             {
                 strokes = routesPointsFile.get(index).split(",");
-                tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                        Double.parseDouble(strokes[1]));
                 if(!strokes[0].equals("0.0"))
                     firstPoint = tempPoint;
                 pathOverlay.addPoint(tempPoint);
@@ -427,7 +403,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
         if(mv.getUserLocation() != null)
         {
-            LatLng startingPoint = new LatLng(mv.getUserLocation().getLatitude(), mv.getUserLocation().getLongitude());
+            LatLng startingPoint = new LatLng(mv.getUserLocation().getLatitude(),
+                    mv.getUserLocation().getLongitude());
 
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
             SharedPreferences.Editor editor = prefs.edit();
@@ -554,31 +531,40 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                         sortedTextMainEnArray.set(j, sortedTextMainEnArray.get(j + 1));
                         sortedTextMainEnArray.set(j + 1, tempTextMainEn);
 
-                        name0 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        name0 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/urls" + j + ".txt";
 
-                        name1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        name1 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/urls" + (j+1) + ".txt";
 
-                        nameTemp = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTemp = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/urls" + 999 + ".txt";
 
-                        nameTheme0 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTheme0 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameThemesArray" + j + ".txt";
 
-                        nameTheme1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTheme1 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameThemesArray" + (j+1) + ".txt";
 
-                        nameThemeTemp = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameThemeTemp = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameThemesArray" + 999 + ".txt";
 
-                        nameTag0 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTag0 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameTagsArray" + j + ".txt";
 
-                        nameTag1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTag1 = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameTagsArray" + (j+1) + ".txt";
 
-                        nameTagTemp = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow"
+                        nameTagTemp = Environment.getExternalStorageDirectory().getAbsolutePath()
+                                + "/" + "BulgakovMoscow"
                                 + "/nameTagsArray" + 999 + ".txt";
 
                         s = new SwapFiles();
@@ -616,7 +602,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
         }
         else
         {
-            Toast.makeText(getActivity(), "Не удалось получить ваши координаты", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Не удалось получить ваши координаты",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -680,31 +667,10 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
     private boolean isNetworkAvailable()
     {
-        ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getActivity()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
-    }
-
-    public void loadMap()
-    {
-        /*
-        OfflineMapDownloader offlineMapDownloader = OfflineMapDownloader.getOfflineMapDownloader(getActivity());
-        ArrayList<OfflineMapDatabase> offlineMapDatabases = offlineMapDownloader.getMutableOfflineMapDatabases();
-        if (offlineMapDatabases != null && offlineMapDatabases.size() > 0)
-        {
-            OfflineMapDatabase db = offlineMapDatabases.get(0);
-            Log.e(TAG, "Загружаем карту...");
-            OfflineMapTileProvider tp = new OfflineMapTileProvider(getActivity(), db);
-            TilesOverlay offlineMapOverlay = new TilesOverlay(tp);
-            mv.addOverlay(offlineMapOverlay);
-
-            showMarkers();
-        }
-        else
-        {
-            Log.e(TAG, "Нет загруженных ранее карт, необходимо подключение к интернету.");
-        }
-        */
     }
 
     public void firstLaunch()
@@ -713,32 +679,7 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
         {
             showDialogLocation();
             prefs.edit().putBoolean("firstrun", false).apply();
-            updateSavingMap();
         }
-    }
-
-    public void updateSavingMap()
-    {
-        /*
-        if (isNetworkAvailable())
-        {
-            OfflineMapDownloader offlineMapDownloader = OfflineMapDownloader.getOfflineMapDownloader(getActivity());
-
-
-            if (offlineMapDownloader.isMapIdAlreadyAnOfflineMapDatabase(mainMap))
-            {
-                boolean result = offlineMapDownloader.removeOfflineMapDatabaseWithID(mainMap);
-                Log.e("Delete ", String.format(MAPBOX_LOCALE, "Result of deletion attempt: '%s'", result));
-            }
-
-            Log.e(TAG, "Сохраняем карту...");
-            BoundingBox boundingBox = mv.getBoundingBox();
-            CoordinateSpan span = new CoordinateSpan(boundingBox.getLatitudeSpan(), boundingBox.getLongitudeSpan());
-            CoordinateRegion coordinateRegion = new CoordinateRegion(mv.getCenter(), span);
-            offlineMapDownloader.beginDownloadingMapID(mainMap,
-                    coordinateRegion, (int) mv.getZoomLevel(), (int) mv.getZoomLevel());
-        }
-        */
     }
 
     @Override
@@ -746,7 +687,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
     {
         super.onResume();
 
-        if (prefs.getBoolean("firstrun", true) && updateTask != null && updateTask.getStatus().equals(AsyncTask.Status.FINISHED))
+        if (prefs.getBoolean("firstrun", true) && updateTask != null &&
+                updateTask.getStatus().equals(AsyncTask.Status.FINISHED))
         {
             showDialogLocation();
             prefs.edit().putBoolean("firstrun", false).apply();
@@ -757,9 +699,9 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
     public void onStop()
     {
         super.onPause();
-        if( (saveMapIndicator) && (mv.getBoundingBox()) != null && (mv.getCenter()) != new LatLng(0.0, 0.0, 0.0) )
+        if( (saveMapIndicator) && (mv.getBoundingBox()) != null &&
+                (mv.getCenter()) != new LatLng(0.0, 0.0, 0.0) )
         {
-            updateSavingMap();
             saveMapIndicator = !saveMapIndicator;
         }
     }
@@ -768,7 +710,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
     {
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())
@@ -878,7 +821,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
     {
         try
         {
-            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + "/" + "BulgakovMoscow";
             File sdPath = new File(FILEPATH);
 
             if (!sdPath.exists())
@@ -910,12 +854,14 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
         if(globals.getLanguage().equals("ru"))
         {
-            visiblePointsNames = readFromFile("visiblePointsNames" + globals.getPositionRoutesInfo() + ".txt");
+            visiblePointsNames = readFromFile("visiblePointsNames"
+                    + globals.getPositionRoutesInfo() + ".txt");
         }
 
         else
         {
-            visiblePointsNames = readFromFile("visiblePointsNames" + globals.getPositionRoutesInfo() + ".txt");
+            visiblePointsNames = readFromFile("visiblePointsNames"
+                    + globals.getPositionRoutesInfo() + ".txt");
         }
 
         String[] strokes;
@@ -948,7 +894,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 if (visiblePointsNames.get(k).equals(placesNames.get(i)))
                 {
                     strokes = pointsFile.get(i).split(",");
-                    tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                    tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                            Double.parseDouble(strokes[1]));
                     routesPoints.add(tempPoint);
                     indexesNames.add(k);
                     indexesPoints.add(i);
@@ -965,7 +912,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
 
             for(int i = 0; i < routesPoints.size(); i++)
             {
-                markers.add(new Marker(mv, visiblePointsNames.get(indexesNames.get(i)), "", routesPoints.get(i)));
+                markers.add(new Marker(mv, visiblePointsNames.get(indexesNames.get(i)),
+                        "", routesPoints.get(i)));
                 markers.get(i).setIcon(new Icon(shape));
                 markers.get(i).setDescription(String.valueOf(i));
 
@@ -990,7 +938,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 @Override
                 public void onTapMarker(MapView pMapView, Marker pMarker)
                 {
-                    //mv.addListener(MainTestFragment.this);
                     showBubble = true;
                     positionMain = Integer.parseInt(pMarker.getDescription());
                     bubbleTitle.setText(pMarker.getTitle());
@@ -999,7 +946,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 @Override
                 public void onLongPressMarker(MapView pMapView, Marker pMarker)
                 {
-                    //mv.addListener(MainTestFragment.this);
                     showBubble = true;
                     positionMain = Integer.parseInt(pMarker.getDescription());
                     bubbleTitle.setText(pMarker.getTitle());
@@ -1023,15 +969,12 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 @Override
                 public void onScroll(ScrollEvent scrollEvent)
                 {
-                    //Log.e("scrolling is ", "finished!");
                     if (showBubble)
                     {
-                        //Log.e("showBubble ", "..");
                         bubble.setVisibility(View.VISIBLE);
                         showBubble = false;
                     } else
                     {
-                        //Log.e("closeBubble", "..");
                         bubble.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -1041,12 +984,10 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 {
                     if (showBubble)
                     {
-                        //Log.e("showBubble ", "..");
                         bubble.setVisibility(View.VISIBLE);
                         showBubble = false;
                     } else
                     {
-                        //Log.e("closeBubble", "..");
                         bubble.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -1059,11 +1000,9 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
             }));
         }
 
-        globals.setMarkersMainTest(markers);
-
-        if( (saveMapIndicator) && (mv.getBoundingBox()) != null && (mv.getCenter()) != new LatLng(0.0, 0.0, 0.0) )
+        if( (saveMapIndicator) && (mv.getBoundingBox()) != null
+                && (mv.getCenter()) != new LatLng(0.0, 0.0, 0.0) )
         {
-            //updateSavingMap();
             saveMapIndicator = !saveMapIndicator;
         }
     }
@@ -1090,7 +1029,8 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
             for (int i = 0; i < pointsFile.size(); i++)
             {
                 strokes = pointsFile.get(i).split(",");
-                tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                        Double.parseDouble(strokes[1]));
                 points.add(tempPoint);
             }
             Log.e("points ", points.toString());
@@ -1136,9 +1076,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                         showBubble = true;
                         positionMain = Integer.parseInt(pMarker.getDescription());
                         bubbleTitle.setText(pMarker.getTitle());
-                        //bubble.setVisibility(View.VISIBLE);
-                        //mv.addListener(MainTestFragment.this);
-                        //Log.e("ONTAPMARKER ", "..");
                     }
 
                     @Override
@@ -1153,7 +1090,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                     public void onTapMap(MapView pMapView, ILatLng pPosition)
                     {
                         bubble.setVisibility(View.INVISIBLE);
-                        //Log.e("ONTAPMAP ", "ON TAP");
                     }
 
                     @Override
@@ -1168,15 +1104,12 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                     @Override
                     public void onScroll(ScrollEvent scrollEvent)
                     {
-                        //Log.e("scrolling is ", "finished!");
                         if (showBubble)
                         {
-                            //Log.e("showBubble ", "..");
                             bubble.setVisibility(View.VISIBLE);
                             showBubble = false;
                         } else
                         {
-                            //Log.e("closeBubble", "..");
                             bubble.setVisibility(View.INVISIBLE);
                         }
                     }
@@ -1186,12 +1119,10 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                     {
                         if (showBubble)
                         {
-                            //Log.e("showBubble ", "..");
                             bubble.setVisibility(View.VISIBLE);
                             showBubble = false;
                         } else
                         {
-                            //Log.e("closeBubble", "..");
                             bubble.setVisibility(View.INVISIBLE);
                         }
                     }
@@ -1204,15 +1135,6 @@ public class MainTestFragmentEn extends Fragment implements MapboxConstants, Off
                 }));
             }
 
-            globals.setMarkersMainTest(markers);
-
-        /*
-        if( (saveMapIndicator) && (mv.getBoundingBox()) != null && (mv.getCenter()) != new LatLng(0.0, 0.0, 0.0) )
-        {
-            //updateSavingMap();
-            saveMapIndicator = !saveMapIndicator;
-        }
-        */
             markersShowed = true;
         }
     }

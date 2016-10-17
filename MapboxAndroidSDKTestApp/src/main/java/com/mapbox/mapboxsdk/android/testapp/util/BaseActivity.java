@@ -9,9 +9,6 @@ import android.view.Window;
 
 import com.mapbox.mapboxsdk.android.testapp.R;
 
-/**
- * Created by hetfieldan24 on 18.02.2015.
- */
 public class BaseActivity extends Activity
 {
     private ViewTreeObserver.OnGlobalLayoutListener keyboardLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener()
@@ -22,7 +19,8 @@ public class BaseActivity extends Activity
             int heightDiff = rootLayout.getRootView().getHeight() - rootLayout.getHeight();
             int contentViewTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
 
-            LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(BaseActivity.this);
+            LocalBroadcastManager broadcastManager = LocalBroadcastManager
+                    .getInstance(BaseActivity.this);
 
             if(heightDiff <= contentViewTop){
                 onHideKeyboard();

@@ -55,7 +55,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
         {
             pd.setMessage("Идёт загрузка...");
             pd.setCancelable(false);
-            pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Отмена", new DialogInterface.OnClickListener()
+            pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Отмена",
+                    new DialogInterface.OnClickListener()
             {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
@@ -93,7 +94,7 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
     protected void onPostExecute(JSONObject jsonData)
     {
         // если какой-то фейл, проверяем на null
-        // фейл может быть по многим причинам: сервер сдох, нет сети на устройстве и т.д.
+        // фейл может быть по многим причинам: сервер упал, нет сети на устройстве и т.д.
         if (jsonData != null)
         {
             super.onPostExecute(jsonData);
@@ -109,7 +110,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
                 cleanCash(new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                         + "/" + "BulgakovCash"));
 
-                if (!(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow/"
+                if (!(new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                        + "/" + "BulgakovMoscow/"
                         + "lastUpdateArray.txt").exists()) || (!lastUpdateArray.get(0).equals(
                         readFromFile("lastUpdateArray.txt").get(0))))
                 {
@@ -139,7 +141,6 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
                     JSONArray themes;
                     JSONArray tags;
                     JSONObject preview;
-                    JSONObject objPreview;
 
                     ArrayList<LatLng> points = new ArrayList<LatLng>();
                     ArrayList<Double> latArray = new ArrayList<Double>();
@@ -164,7 +165,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
                     ArrayList<String> nameTagsEnArray = new ArrayList<String>();
 
                     String DIR_SD = "BulgakovMoscow";
-                    String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + DIR_SD;
+                    String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                            + "/" + DIR_SD;
                     File sdPath = new File(FILEPATH);
 
                     try
@@ -364,11 +366,10 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
                 else if (lastUpdateArray.get(0).equals(
                         readFromFile("lastUpdateArray.txt").get(0)))
                 {
-                    Log.e("no update, last update was ", lastUpdate);
+                    Log.e("no update, last was ", lastUpdate);
                 }
 
                 String locale = context.getResources().getConfiguration().locale.toString();
-                //String locale2 = fragment.getActivity().getResources().getConfiguration().locale.toString();
 
                 if (locale.toLowerCase().equals("ru_ru"))
                 {
@@ -384,7 +385,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
             }
             catch (JSONException e)
             {
-                Toast.makeText(context, "Not successful! JSONException: " + e, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Not successful! JSONException: " + e,
+                        Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }
@@ -402,7 +404,7 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
         }
         catch (final IllegalArgumentException e)
         {
-            Log.e("IllegalArgumentException", e.getMessage());
+            Log.e("IllegalArgumException", e.getMessage());
         }
         catch (final Exception e)
         {
@@ -436,7 +438,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
     {
         try
         {
-            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + "/" + "BulgakovMoscow";
             File sdPath = new File(FILEPATH);
 
             if (!sdPath.exists())
@@ -467,7 +470,8 @@ public class GETUpdateTask extends AsyncTask<String, Void, JSONObject>
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())

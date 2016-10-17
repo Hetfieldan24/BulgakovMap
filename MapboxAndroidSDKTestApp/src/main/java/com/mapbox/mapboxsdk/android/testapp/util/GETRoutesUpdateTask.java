@@ -51,7 +51,8 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
         {
             pd.setMessage("Идёт загрузка...");
             pd.setCancelable(false);
-            pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Отмена", new DialogInterface.OnClickListener()
+            pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Отмена",
+                    new DialogInterface.OnClickListener()
             {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
@@ -98,7 +99,10 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                 lastUpdateRoutesArray.add(lastUpdateRoutes);
                 Log.e("lastUpdate ", lastUpdateRoutes);
 
-                if(!(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow/" + "lastUpdateRoutesArray.txt").exists()) || (!lastUpdateRoutesArray.get(0).equals(
+                if(!(new File(Environment
+                        .getExternalStorageDirectory()
+                        .getAbsolutePath() + "/" + "BulgakovMoscow/" + "lastUpdateRoutesArray.txt")
+                        .exists()) || (!lastUpdateRoutesArray.get(0).equals(
                         readFromFile("lastUpdateRoutesArray.txt").get(0))))
                 {
                     JSONArray data = jsonData.getJSONArray("routes");
@@ -113,7 +117,6 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                     ArrayList<String> routesDescriptionEn = new ArrayList<String>();
                     ArrayList<String> routesNameEnArray = new ArrayList<String>();
                     ArrayList<String> visiblePointsNames = new ArrayList<String>();
-                    ArrayList<LatLng> visiblePoints = new ArrayList<LatLng>();
 
                     String[] strokes;
                     JSONArray polyline;
@@ -170,13 +173,6 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                             {
                                 cntVisiblePoints++;
                                 visiblePointsNames.add(objPoints.getString("name"));
-
-                                /*
-                                lat = Double.parseDouble(obj.getString("lat"));
-                                lng = Double.parseDouble(obj.getString("lng"));
-
-                                visiblePoints.add(new LatLng(lat, lng));
-                                */
                             }
                         }
                         routesNumberOfPoints.add(String.valueOf(cntVisiblePoints) + " мест");
@@ -184,19 +180,17 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                         writeInFile(visiblePointsNames, "visiblePointsNames" + i + ".txt");
                         visiblePointsNames = new ArrayList<String>();
 
-                        /*
-                        writeInFile(visiblePoints, "visiblePoints" + i + ".txt");
-                        visiblePoints = new ArrayList<>();
-                        */
-
                         if (!obj.getString("distance").equals("null"))
                         {
 
-                            if((obj.getString("distance").contains(",")) && obj.getString("distance").contains("км"))
+                            if((obj.getString("distance").contains(","))
+                                    && obj.getString("distance").contains("км"))
                             {
                                 tempDistance = Double.valueOf(obj.getString("distance")
                                                 .replaceAll(",", ".")
-                                                .substring(0, obj.getString("distance").length() - 3));
+                                                .substring(0, obj
+                                                        .getString("distance")
+                                                        .length() - 3));
                             }
                             else if(obj.getString("distance").contains(","))
                             {
@@ -221,7 +215,9 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                         {
                             if((obj.getString("duration").contains(",")))
                             {
-                                tempDuration = Double.valueOf(obj.getString("duration").replaceAll(",", "."));
+                                tempDuration = Double.valueOf(obj
+                                        .getString("duration")
+                                        .replaceAll(",", "."));
                                 intPart = (int) tempDuration;
                                 doublePart = (int) ((tempDuration - intPart) * 60);
                             }
@@ -302,9 +298,11 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                             for (int k = 0; k < polyline.length(); k++)
                             {
                                 strokes =
-                                        polyline.getString(k).replaceAll("\\[", "").replaceAll("\\]", "").split(",");
+                                        polyline.getString(k).replaceAll("\\[", "")
+                                                .replaceAll("\\]", "").split(",");
 
-                                routesPoints.add(new LatLng(Double.valueOf(strokes[0]), Double.valueOf(strokes[1])));
+                                routesPoints.add(new LatLng(Double.valueOf(strokes[0]),
+                                        Double.valueOf(strokes[1])));
                             }
                         }
                         writeInFile(routesPoints, "routesPoints" + cnt + ".txt");
@@ -332,7 +330,8 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
 
                         writeInFile(nameTagsArray, "nameTagsRoutesArray" + cntTagsRoutes + ".txt");
                         nameTagsArray = new ArrayList<String>();
-                        writeInFile(nameTagsEnArray, "nameTagsEnRoutesArray" + cntTagsRoutes + ".txt");
+                        writeInFile(nameTagsEnArray, "nameTagsEnRoutesArray"
+                                + cntTagsRoutes + ".txt");
                         nameTagsEnArray = new ArrayList<String>();
                         cntTagsRoutes++;
                     }
@@ -353,7 +352,7 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
                 else if(lastUpdateRoutesArray.get(0).equals(
                         readFromFile("lastUpdateArray.txt").get(0)))
                 {
-                    Log.e("no update, last update was ", lastUpdateRoutes);
+                    Log.e("no update, last was ", lastUpdateRoutes);
                 }
                 Log.e("activity", activity.getLocalClassName());
                 if(activity.getLocalClassName().equals("activities.RoutesActivity"))
@@ -365,7 +364,8 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
             }
             catch (JSONException e)
             {
-                Toast.makeText(activity, "Not successful! JSONException: " + e, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Not successful! JSONException: " + e,
+                        Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }
@@ -379,7 +379,7 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
         }
         catch (final IllegalArgumentException e)
         {
-            Log.e("IllegalArgumentException", e.getMessage());
+            Log.e("IllegalArgumException", e.getMessage());
         }
         catch (final Exception e)
         {
@@ -413,7 +413,8 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
     {
         try
         {
-            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+            String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + "/" + "BulgakovMoscow";
             File sdPath = new File(FILEPATH);
 
             if (!sdPath.exists())
@@ -444,7 +445,8 @@ public class GETRoutesUpdateTask extends AsyncTask<String, Void, JSONObject>
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())

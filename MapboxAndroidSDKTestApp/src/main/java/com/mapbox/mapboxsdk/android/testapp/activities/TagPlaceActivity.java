@@ -150,7 +150,8 @@ public class TagPlaceActivity extends Activity implements View.OnClickListener
                     String[] strokes;
 
                     strokes = pointsFile.get(index).split(",");
-                    tempPoint = new LatLng(Double.parseDouble(strokes[0]), Double.parseDouble(strokes[1]));
+                    tempPoint = new LatLng(Double.parseDouble(strokes[0]),
+                            Double.parseDouble(strokes[1]));
                     points.add(tempPoint);
 
                     /******** Take Model Object in ArrayList **********/
@@ -203,7 +204,8 @@ public class TagPlaceActivity extends Activity implements View.OnClickListener
         StringBuffer buffer = new StringBuffer();
         ArrayList<String> result = new ArrayList<String>();
 
-        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "BulgakovMoscow";
+        String FILEPATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + "BulgakovMoscow";
         File sdPath = new File(FILEPATH);
 
         if (!sdPath.exists())
